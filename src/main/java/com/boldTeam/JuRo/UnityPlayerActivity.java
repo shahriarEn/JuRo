@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,6 +20,8 @@ public class UnityPlayerActivity extends Activity
     // Setup activity layout
     @Override protected void onCreate(Bundle savedInstanceState)
     {
+
+        Log.v("unityLog","onCreate");
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
 
@@ -29,6 +32,7 @@ public class UnityPlayerActivity extends Activity
 
     @Override protected void onNewIntent(Intent intent)
     {
+        Log.v("unityLog","onNewIntent");
         // To support deep linking, we need to make sure that the client can get access to
         // the last sent intent. The clients access this through a JNI api that allows them
         // to get the intent set on launch. To update that after launch we have to manually
@@ -39,6 +43,7 @@ public class UnityPlayerActivity extends Activity
     // Quit Unity
     @Override protected void onDestroy ()
     {
+        Log.v("unityLog","onDestroy");
         mUnityPlayer.destroy();
         super.onDestroy();
     }
@@ -46,6 +51,7 @@ public class UnityPlayerActivity extends Activity
     // Pause Unity
     @Override protected void onPause()
     {
+        Log.v("unityLog","onPause");
         super.onPause();
         mUnityPlayer.pause();
     }
@@ -53,18 +59,21 @@ public class UnityPlayerActivity extends Activity
     // Resume Unity
     @Override protected void onResume()
     {
+        Log.v("unityLog","onResume");
         super.onResume();
         mUnityPlayer.resume();
     }
 
     @Override protected void onStart()
     {
+        Log.v("unityLog","onStart");
         super.onStart();
         mUnityPlayer.start();
     }
 
     @Override protected void onStop()
     {
+        Log.v("unityLog","onStop");
         super.onStop();
         mUnityPlayer.stop();
     }
@@ -72,6 +81,7 @@ public class UnityPlayerActivity extends Activity
     // Low Memory Unity
     @Override public void onLowMemory()
     {
+        Log.v("unityLog","onLowMemory");
         super.onLowMemory();
         mUnityPlayer.lowMemory();
     }
@@ -79,6 +89,7 @@ public class UnityPlayerActivity extends Activity
     // Trim Memory Unity
     @Override public void onTrimMemory(int level)
     {
+        Log.v("unityLog","onTrimMemory");
         super.onTrimMemory(level);
         if (level == TRIM_MEMORY_RUNNING_CRITICAL)
         {
@@ -89,6 +100,7 @@ public class UnityPlayerActivity extends Activity
     // This ensures the layout will be correct.
     @Override public void onConfigurationChanged(Configuration newConfig)
     {
+        Log.v("unityLog","onConfigurationChanged");
         super.onConfigurationChanged(newConfig);
         mUnityPlayer.configurationChanged(newConfig);
     }
@@ -96,6 +108,7 @@ public class UnityPlayerActivity extends Activity
     // Notify Unity of the focus change.
     @Override public void onWindowFocusChanged(boolean hasFocus)
     {
+        Log.v("unityLog","onWindowFocusChanged");
         super.onWindowFocusChanged(hasFocus);
         mUnityPlayer.windowFocusChanged(hasFocus);
     }
